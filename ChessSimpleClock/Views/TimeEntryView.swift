@@ -7,42 +7,41 @@
 
 import SwiftUI
 
-let pastelGreen = Color(red: 0.38, green: 0.63, blue: 0.36)
- 
-
 struct TimeEntryView: View {
     @State private var selectedTime = "5 Minutes"
     
     let times = ["5 Minutes", "10 Minutes", "15 Minutes", "20 Minutes", "25 Minutes", "30 Minutes"]
     
     var body: some View {
-        NavigationView {
+        ZStack {
+            //Background
+            Color("AppColor").ignoresSafeArea()
+            
             VStack {
                 Spacer()
                 Picker("Times", selection: $selectedTime) {
                     ForEach(times, id: \.self) { time in
                         Text(time)
                             .foregroundColor(.black)
+                            .fontWeight(.semibold)
                     }
                 }
-                .pickerStyle(WheelPickerStyle())
-                .padding(.bottom)
+                .pickerStyle(.wheel)
                 NavigationLink(destination: TimersView(selectedTime: selectedTime)) {
-                    TimerButton(label: "Play", buttonColor: pastelGreen)
+                    ButtonLabel(label: "Play", buttonColor: Color("ButtonColor"))
                 }
                 Spacer()
             }
-            .background(Color(red: 0.88, green: 0.96, blue: 0.89))
+            .padding(.bottom, 50)
             .navigationTitle("Choose your time")
-            .navigationBarTitleDisplayMode(.automatic)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
-        .foregroundColor(.black)
     }
 }
 
 struct TimeEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        TimeEntryView()
+        NavigationStack {
+            TimeEntryView()
+        }
     }
 }

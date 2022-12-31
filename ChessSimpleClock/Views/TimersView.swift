@@ -37,7 +37,7 @@ struct TimersView: View {
                         self.vm.whiteStart()
                         self.vm.playSound()
                     } label: {
-                        TimerButton(label: "BEGIN GAME", buttonColor: pastelGreen)
+                        ButtonLabel(label: "BEGIN GAME", buttonColor: Color("ButtonColor"))
                     }
                     .padding(.bottom, 100)
                 }
@@ -50,7 +50,7 @@ struct TimersView: View {
                         Button {
                             vm.resetGame()
                         } label: {
-                            TimerButton(label: "Play again?", buttonColor: pastelGreen)
+                            ButtonLabel(label: "Play again?", buttonColor: Color("ButtonColor"))
                         }
                     }
                 } else if vm.blackMode == .finished {
@@ -61,7 +61,7 @@ struct TimersView: View {
                         Button {
                             vm.resetGame()
                         } label: {
-                            TimerButton(label: "Play again?", buttonColor: pastelGreen)
+                            ButtonLabel(label: "Play again?", buttonColor: Color("ButtonColor"))
                         }
                     }
                 }
@@ -130,111 +130,3 @@ struct ContentView_Previews: PreviewProvider {
         TimersView(selectedTime: "5 Minutes")
     }
 }
-
-struct TimerButton: View {
-    let label: String
-    let buttonColor: Color
-    
-    var body: some View {
-        Text(label)
-            .foregroundColor(.white)
-            .padding(.vertical, 20)
-            .padding(.horizontal, 90)
-            .background(buttonColor)
-            .cornerRadius(10)
-    }
-}
-
-
-/*
- //The background color
- if (self.vm.playerTurn == .white && vm.hasBegan) {
- Color.white.ignoresSafeArea()
- } else if (self.vm.playerTurn == .black && vm.hasBegan) {
- Color.black.ignoresSafeArea()
- } else {
- Color.init(red: 0.88, green: 0.96, blue: 0.89).ignoresSafeArea()
- }
- VStack {
- if (self.vm.hasBegan == false) {
- 
- Text("White will go first")
- .font(.title)
- .padding(.bottom)
- Text("once you press BEGIN GAME the timer will start")
- .font(.title3)
- .padding(.bottom)
- Button {
- self.vm.toggleGameOn()
- self.vm.whiteStart()
- } label: {
- TimerButton(label: "BEGIN GAME", buttonColor: .blue)
- }
- .padding(.bottom, 100)
- } else if (self.vm.hasBegan == true) {
- if (vm.playerTurn == .white) {
- Text(self.vm.whiteCountdownTime)
- .font(.custom("Avenir", size: 100))
- .padding(.top, 50)
- .padding(.bottom, 100)
- if vm.whiteMode == .running {
- Button {
- self.vm.whitePause()
- self.vm.changePlayerTurn()
- self.vm.blackStart()
- } label: {
- TimerButton(label: "END TURN", buttonColor: .blue)
- }
- }
- if vm.whiteMode == .finished {
- Button {
- print("timer ended")
- } label: {
- TimerButton(label: "Reset", buttonColor: .blue)
- }
- }
- } else if (vm.playerTurn == .black) {
- Text(self.vm.blackCountdownTime)
- .font(.custom("Avenir", size: 100))
- .padding(.top, 50)
- .padding(.bottom, 100)
- .foregroundColor(.white)
- if vm.blackMode == .running {
- Button {
- self.vm.blackPause()
- self.vm.changePlayerTurn()
- self.vm.whiteStart()
- } label: {
- TimerButton(label: "END TURN", buttonColor: .blue)
- }
- }
- if vm.blackMode == .finished {
- Button {
- print("timer ended")
- } label: {
- TimerButton(label: "Reset", buttonColor: .blue)
- }
- }
- }
- }
- }
- //Reset the timer when the view disappears
- .onDisappear{
- 
- }
- 
- 
- 
- 
- .onTapGesture {
- switch (vm.playerTurn) {
- case .white:
- self.vm.whitePause()
- self.vm.blackStart()
- case .black:
- self.vm.blackPause()
- self.vm.whiteStart()
- }
- self.vm.changePlayerTurn()
- }
- */

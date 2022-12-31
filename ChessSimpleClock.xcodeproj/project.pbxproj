@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB680EEC295C2778009F2F8E /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB680EEB295C2778009F2F8E /* StopWatch.swift */; };
 		DB71FE0E290686C00090BF54 /* TimeEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB71FE0D290686C00090BF54 /* TimeEntryView.swift */; };
+		DB728D0F2960C8E4001B9512 /* ButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB728D0E2960C8E4001B9512 /* ButtonLabel.swift */; };
 		DB76D0772906241E00D972F1 /* ChessSimpleClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB76D0762906241E00D972F1 /* ChessSimpleClockApp.swift */; };
 		DB76D0792906241E00D972F1 /* TimersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB76D0782906241E00D972F1 /* TimersView.swift */; };
 		DB76D07B2906241F00D972F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB76D07A2906241F00D972F1 /* Assets.xcassets */; };
@@ -17,7 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB680EEB295C2778009F2F8E /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
+		DB680EED295C29ED009F2F8E /* Clock.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Clock.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DB71FE0D290686C00090BF54 /* TimeEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryView.swift; sourceTree = "<group>"; };
+		DB728D0E2960C8E4001B9512 /* ButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLabel.swift; sourceTree = "<group>"; };
 		DB76D0732906241E00D972F1 /* ChessSimpleClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessSimpleClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB76D0762906241E00D972F1 /* ChessSimpleClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessSimpleClockApp.swift; sourceTree = "<group>"; };
 		DB76D0782906241E00D972F1 /* TimersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersView.swift; sourceTree = "<group>"; };
@@ -38,11 +43,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB680EEA295C1F56009F2F8E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DB680EEB295C2778009F2F8E /* StopWatch.swift */,
+				DB680EED295C29ED009F2F8E /* Clock.playground */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DB71FE0F290699AD0090BF54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				DB71FE0D290686C00090BF54 /* TimeEntryView.swift */,
 				DB76D0782906241E00D972F1 /* TimersView.swift */,
+				DB728D0E2960C8E4001B9512 /* ButtonLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -75,6 +90,7 @@
 		DB76D0752906241E00D972F1 /* ChessSimpleClock */ = {
 			isa = PBXGroup;
 			children = (
+				DB680EEA295C1F56009F2F8E /* Models */,
 				DB71FE10290699B70090BF54 /* ViewModels */,
 				DB71FE0F290699AD0090BF54 /* Views */,
 				DB76D0762906241E00D972F1 /* ChessSimpleClockApp.swift */,
@@ -171,10 +187,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB728D0F2960C8E4001B9512 /* ButtonLabel.swift in Sources */,
 				DB76D0792906241E00D972F1 /* TimersView.swift in Sources */,
 				DB76D0852906282300D972F1 /* TimersViewViewModel.swift in Sources */,
 				DB71FE0E290686C00090BF54 /* TimeEntryView.swift in Sources */,
 				DB76D0772906241E00D972F1 /* ChessSimpleClockApp.swift in Sources */,
+				DB680EEC295C2778009F2F8E /* StopWatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +342,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -357,7 +375,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

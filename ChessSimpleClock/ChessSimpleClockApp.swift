@@ -11,7 +11,9 @@ import SwiftUI
 struct ChessSimpleClockApp: App {
     var body: some Scene {
         WindowGroup {
-            TimeEntryView()
+            NavigationStack {
+                TimeEntryView()
+            }
         }
     }
 }

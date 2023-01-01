@@ -8,40 +8,20 @@
 import SwiftUI
 
 struct TimersView: View {
-    @ObservedObject var vm: TimersViewViewModel //= TimersViewViewModel()
+    @ObservedObject var vm: TimersViewViewModel
     
     init(selectedTime: String) {
         self.vm = TimersViewViewModel(selectedTime: selectedTime)
     }
     
     var body: some View {
-        //ZStack is for the background color to change
         ZStack {
-            Color.init(red: 0.88, green: 0.96, blue: 0.89).ignoresSafeArea()
+            //Background
+            Color("AppColor").ignoresSafeArea()
+            
             if self.vm.hasBegan == false {
-                VStack {
-                    Text("White will go first")
-                        .font(.title)
-                        .padding(.bottom)
-                        .foregroundColor(.black)
-                    Text("once you press begin game the timer will start")
-                        .font(.title3)
-                        .padding(.bottom)
-                        .foregroundColor(.black)
-                    Text("To end your turn tap anywhere your color is shown")
-                        .font(.title3)
-                        .padding(.bottom)
-                        .foregroundColor(.black)
-                    Button {
-                        self.vm.toggleGameOn()
-                        self.vm.whiteStart()
-                        self.vm.playSound()
-                    } label: {
-                        ButtonLabel(label: "BEGIN GAME", buttonColor: Color("ButtonColor"))
-                    }
-                    .padding(.bottom, 100)
-                }
-            } else if self.vm.hasBegan == true {
+                welcomeScreen
+            } else {
                 if (vm.whiteMode == .finished) {
                     VStack {
                         Text("White ran out of time")
@@ -50,7 +30,7 @@ struct TimersView: View {
                         Button {
                             vm.resetGame()
                         } label: {
-                            ButtonLabel(label: "Play again?", buttonColor: Color("ButtonColor"))
+                            ButtonLabel(label: "Play again?")
                         }
                     }
                 } else if vm.blackMode == .finished {
@@ -61,7 +41,7 @@ struct TimersView: View {
                         Button {
                             vm.resetGame()
                         } label: {
-                            ButtonLabel(label: "Play again?", buttonColor: Color("ButtonColor"))
+                            ButtonLabel(label: "Play again?")
                         }
                     }
                 }
@@ -70,6 +50,7 @@ struct TimersView: View {
                         ZStack {
                             Color.white.ignoresSafeArea()
                             VStack {
+                                Spacer()
                                 Text("Whites turn")
                                     .font(.custom("Avenir", size: 50))
                                     .foregroundColor(.black)
@@ -125,8 +106,41 @@ struct TimersView: View {
     
 }
 
+extension TimersView {
+    private var welcomeScreen: some View {
+        VStack() {
+            Spacer()
+            VStack(alignment: .center, spacing: 6) {
+                Text("White will go first")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                Text("once you press begin game the timer will start. To end your turn tap anywhere your color is shown")
+                    .font(.title3)
+            }
+            .foregroundColor(.black)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: 500)
+            .padding(.horizontal, 10)
+            .padding(.bottom, 30)
+            Button {
+                self.vm.toggleGameOn()
+                self.vm.whiteStart()
+                self.vm.playSound()
+            } label: {
+                ButtonLabel(label: "BEGIN GAME")
+            }
+            Spacer()
+        }
+        .padding(.bottom, 50)
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        TimersView(selectedTime: "5 Minutes")
+        NavigationStack {
+            TimersView(selectedTime: "5 Minutes")
+        }
+        .navigationTitle("TESTING")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }

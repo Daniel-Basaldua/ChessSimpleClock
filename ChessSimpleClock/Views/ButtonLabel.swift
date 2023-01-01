@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ButtonLabel: View {
     let label: String
-    let buttonColor: Color
     
     var body: some View {
         Text(label)
@@ -17,14 +16,14 @@ struct ButtonLabel: View {
             .fontWeight(.medium)
             .padding(.vertical, 20)
             .padding(.horizontal, 90)
-            .background(buttonColor)
+            .background(Color("ButtonColor"))
             .cornerRadius(10)
     }
 }
 
 struct ButtonLabel_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonLabel(label: "TESTING", buttonColor: Color("ButtonColor"))
+        ButtonLabel(label: "TESTING")
             .previewLayout(.sizeThatFits)
     }
 }

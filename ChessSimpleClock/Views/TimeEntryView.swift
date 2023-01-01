@@ -12,13 +12,6 @@ struct TimeEntryView: View {
     
     let times = ["5 Minutes", "10 Minutes", "15 Minutes", "20 Minutes", "25 Minutes", "30 Minutes"]
     
-    /*Workaround to change navigationTitle foreground color.
-     This will affect navigation titles and only works with inline styles
-     */
-    init() {
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
-    }
-    
     var body: some View {
         ZStack {
             //Background

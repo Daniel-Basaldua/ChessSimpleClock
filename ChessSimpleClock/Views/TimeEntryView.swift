@@ -12,7 +12,9 @@ struct TimeEntryView: View {
     
     let times = ["5 Minutes", "10 Minutes", "15 Minutes", "20 Minutes", "25 Minutes", "30 Minutes"]
     
-    //Workaround to change navigationTitle foreground color, this will affect navigation titles and only works with inline styles
+    /*Workaround to change navigationTitle foreground color.
+     This will affect navigation titles and only works with inline styles
+     */
     init() {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
     }
@@ -22,20 +24,16 @@ struct TimeEntryView: View {
             //Background
             Color("AppColor").ignoresSafeArea()
             
+            //Body
             VStack {
                 Spacer()
-                Picker("Times", selection: $selectedTime) {
-                    ForEach(times, id: \.self) { time in
-                        Text(time)
-                            .foregroundColor(.black)
-                            .fontWeight(.semibold)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .frame(maxWidth: .infinity)
+                
+                timePicker
+                
                 NavigationLink(destination: TimersView(selectedTime: selectedTime)) {
                     ButtonLabel(label: "Play")
                 }
+                
                 Spacer()
             }
             .padding(.bottom, 50)
@@ -43,6 +41,22 @@ struct TimeEntryView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
     }
+}
+
+extension TimeEntryView {
+    
+    private var timePicker: some View {
+        Picker("Times", selection: $selectedTime) {
+            ForEach(times, id: \.self) { time in
+                Text(time)
+                    .foregroundColor(.black)
+                    .fontWeight(.semibold)
+            }
+        }
+        .pickerStyle(.wheel)
+        .frame(maxWidth: .infinity)
+    }
+    
 }
 
 struct TimeEntryView_Previews: PreviewProvider {

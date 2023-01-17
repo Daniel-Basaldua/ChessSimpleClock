@@ -22,28 +22,8 @@ struct TimersView: View {
             if self.vm.hasBegan == false {
                 welcomeScreen
             } else {
-                if (vm.whiteMode == .finished) {
-                    VStack {
-                        Text("White ran out of time")
-                            .font(.custom("Avenir", size: 50))
-                            .foregroundColor(.black)
-                        Button {
-                            vm.resetGame()
-                        } label: {
-                            ButtonLabel(label: "Play again?")
-                        }
-                    }
-                } else if vm.blackMode == .finished {
-                    VStack {
-                        Text("Black ran out of time")
-                            .font(.custom("Avenir", size: 50))
-                            .foregroundColor(.black)
-                        Button {
-                            vm.resetGame()
-                        } label: {
-                            ButtonLabel(label: "Play again?")
-                        }
-                    }
+                if (vm.gameOver == true) {
+                    gameOverScreen
                 }
                 else {
                     HStack(spacing: 0) {
@@ -65,8 +45,6 @@ struct TimersView: View {
                         }
                         .onTapGesture {
                             if vm.playerTurn == .white {
-                                vm.whitePause()
-                                vm.blackStart()
                                 vm.changePlayerTurn()
                                 vm.playSound()
                             }
@@ -88,8 +66,6 @@ struct TimersView: View {
                         }
                         .onTapGesture {
                             if vm.playerTurn == .black {
-                                vm.blackPause()
-                                vm.whiteStart()
                                 vm.changePlayerTurn()
                                 vm.playSound()
                             }
@@ -99,7 +75,7 @@ struct TimersView: View {
             }
         }
         .onDisappear {
-            self.vm.resetGame()
+            self.vm.resetGameVariables()
         }
         
     }
@@ -108,7 +84,7 @@ struct TimersView: View {
 
 extension TimersView {
     private var welcomeScreen: some View {
-        VStack() {
+        VStack {
             Spacer()
             VStack(alignment: .center, spacing: 6) {
                 Text("White will go first")
@@ -124,7 +100,6 @@ extension TimersView {
             .padding(.bottom, 30)
             Button {
                 self.vm.toggleGameOn()
-                self.vm.whiteStart()
                 self.vm.playSound()
             } label: {
                 ButtonLabel(label: "BEGIN GAME")
@@ -132,6 +107,19 @@ extension TimersView {
             Spacer()
         }
         .padding(.bottom, 50)
+    }
+    
+    private var gameOverScreen: some View {
+        VStack {
+            Text(vm.playerTurn == .white ? "White ran out of time" : "Black ran out of time")
+                .font(.custom("Avenir", size: 50))
+                .foregroundColor(.black)
+            Button {
+                vm.restartGame()
+            } label: {
+                ButtonLabel(label: "Play again?")
+            }
+        }
     }
 }
 

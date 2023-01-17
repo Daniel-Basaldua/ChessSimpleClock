@@ -91,8 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				DB680EEA295C1F56009F2F8E /* Models */,
-				DB71FE10290699B70090BF54 /* ViewModels */,
 				DB71FE0F290699AD0090BF54 /* Views */,
+				DB71FE10290699B70090BF54 /* ViewModels */,
 				DB76D0762906241E00D972F1 /* ChessSimpleClockApp.swift */,
 				DB76D07A2906241F00D972F1 /* Assets.xcassets */,
 				DB76D07C2906241F00D972F1 /* Preview Content */,

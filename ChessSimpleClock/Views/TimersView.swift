@@ -40,7 +40,6 @@ struct TimersView: View {
                                     .font(.custom("Avenir", size: 100))
                                     .padding(.bottom, 140)
                                     .foregroundColor(.black)
-                                Spacer()
                             }
                         }
                         .onTapGesture {
@@ -52,6 +51,7 @@ struct TimersView: View {
                         ZStack {
                             Color.black.ignoresSafeArea()
                             VStack {
+                                Spacer()
                                 Text("Blacks turn")
                                     .font(.custom("Avenir", size: 50))
                                     .foregroundColor(.white)
@@ -61,7 +61,6 @@ struct TimersView: View {
                                     .font(.custom("Avenir", size: 100))
                                     .padding(.bottom, 150)
                                     .foregroundColor(.white)
-                                Spacer()
                             }
                         }
                         .onTapGesture {

@@ -7,6 +7,13 @@
 
 import Foundation
 
+enum stopWatchMode {
+    case running
+    case stopped
+    case paused
+    case finished
+}
+
 class StopWatch {
     var mode: stopWatchMode = .stopped
     var timer = Timer()

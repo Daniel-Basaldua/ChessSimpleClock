@@ -74,7 +74,7 @@ struct TimersView: View {
             }
         }
         .onDisappear {
-            self.vm.resetGameVariables()
+            self.vm.restartGame()
         }
         
     }
